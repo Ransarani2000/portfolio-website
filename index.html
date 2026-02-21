@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R. Punchihewa Portfolio</title>
+  <link rel="icon" type="image/png" href="assets/img/top.png">
+
+  <meta name="description" content="R. Punchihewa — Mechatronics undergraduate specializing in robotics, ROS2, embedded systems, and mechanical design." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <link rel="icon" href="assets/favicon.ico" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#0b1220;color:#e5e7eb;line-height:1.7}
+    a{text-decoration:none;color:inherit}
+
+    /* HERO */
+    header{
+      min-height:90vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      background:radial-gradient(circle at top,#1e3a8a,#020617 70%);
+    }
+    .profile-img{
+      width:160px;height:160px;border-radius:50%;
+      object-fit:cover;border:4px solid #38bdf8;
+      margin-bottom:20px;background:#1e293b;
+    }
+    header h1{font-size:3rem;color:#7dd3fc}
+    header p{font-size:1.1rem;margin:14px 0 22px;color:#cbd5f5;max-width:900px}
+
+    .hero-actions{
+      display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:12px 26px;
+      border-radius:30px;
+      font-weight:700;
+      border:none;
+      cursor:pointer;
+      transition:.25s;
+      background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+      color:#020617;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(56,189,248,.25)}
+    .btn.secondary{
+      background:linear-gradient(135deg,#475569,#1e293b);
+      color:#e5e7eb;
+    }
+    .btn.ghost{
+      background:transparent;
+      border:1px solid #1e293b;
+      color:#cbd5e1;
+    }
+    .btn.ghost:hover{border-color:#38bdf8}
+
+    section{padding:80px 12%}
+    section h2{
+      font-size:2.2rem;
+      margin-bottom:35px;
+      color:#7dd3fc;
+      text-align:center;
+      position:relative;
+    }
+    section h2:after{
+      content:'';
+      width:70px;height:4px;
+      background:#38bdf8;
+      display:block;
+      margin:10px auto 0;
+      border-radius:2px;
+    }
+
+    /* PROFILE */
+    .profile-text{
+      max-width:900px;
+      margin:auto;
+      text-align:center;
+      color:#d1d5db;
+      font-size:1.08rem;
+    }
+
+    .contact-bar{
+      background:#020617;
+      border-radius:50px;
+      padding:15px 22px;
+      margin-top:25px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:20px;
+      border:1px solid #1e293b;
+    }
+    .contact-bar i{color:#38bdf8}
+    .contact-bar a:hover{color:#7dd3fc;text-decoration:underline}
+
+    /* EDUCATION */
+    .info-block{
+      display:flex;
+      flex-wrap:wrap;
+      gap:25px;
+      justify-content:center;
+    }
+    .info-card{
+      background:#020617;
+      border:1px solid #1e293b;
+      border-radius:20px;
+      padding:25px 35px;
+      min-width:250px;
+      text-align:center;
+    }
+    .info-card i{color:#38bdf8;font-size:2rem;margin-bottom:10px}
+    .info-card h4{color:#7dd3fc;margin-bottom:10px}
+
+    /* SKILLS */
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+    }
+    .skill{
+      background:#020617;
+      padding:22px 14px;
+      border-radius:16px;
+      border:1px solid #1e293b;
+      text-align:center;
+      font-weight:600;
+      color:#cbd5e1;
+      transition:.25s;
+    }
+    .skill:hover{
+      transform:translateY(-6px);
+      border-color:#38bdf8;
+    }
+
+    /* PROJECTS */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+    .project-card{
+      background:#020617;
+      padding:25px;
+      border-radius:18px;
+      border:1px solid #1e293b;
+      transition:.25s;
+      display:flex;
+      flex-direction:column;
+    }
+    .project-card:hover{
+      transform:translateY(-8px);
+      border-color:#38bdf8;
+    }
+    .project-card img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:15px;
+      background:#1e293b;
+    }
+    .project-card h3{
+      color:#7dd3fc;
+      margin-bottom:8px;
+    }
+    .project-card h3 span{
+      font-size:.8rem;
+      color:#38bdf8;
+      display:block;
+      margin-top:4px;
+    }
+    .project-card p{color:#cbd5e1;flex-grow:1}
+
+    /* CV */
+    .cv-block{
+      text-align:center;
+      background:#020617;
+      border-radius:20px;
+      padding:50px 30px;
+      border:1px solid #1e293b;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px 15px;
+      background:#020617;
+      color:#94a3b8;
+      border-top:1px solid #1e293b;
+    }
+
+    @media(max-width:768px){
+      header h1{font-size:2.2rem}
+      section{padding:60px 7%}
+      .contact-bar{flex-direction:column;align-items:center}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <img src="assets/img/my.jpg" alt="R. Punchihewa" class="profile-img">
+    <h1>R. PUNCHIHEWA</h1>
+    <p>Mechatronics Undergraduate | Robotics | ROS2 | Embedded Systems | Mechanical Design</p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn">
+        <i class="fas fa-diagram-project" style="margin-right:8px;"></i>View Projects
+      </a>
+      <a href="cv.pdf" class="btn secondary" target="_blank">
+        <i class="fas fa-file-alt" style="margin-right:8px;"></i>Download CV
+      </a>
+      <a href="https://www.linkedin.com/in/ransarani-punchihewa" class="btn ghost" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/ransarani" class="btn ghost" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <h2>Profile</h2>
+  <div class="profile-text">
+    <p>
+      Mechatronics undergraduate focused on robotics, ROS/ROS2 systems, embedded hardware,
+      and mechanical design. Experienced in developing autonomous platforms using SLAM,
+      motor control, and low-cost hardware integration. Currently seeking an internship
+      in robotics or embedded systems engineering.
+    </p>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+
+    <a href="project-line-follower.html">
+      <div class="project-card">
+        <img src="assets/img/LFR.jpg" alt="Line Following Robot">
+        <h3>Line Following Robot</h3>
+        <p>Arduino-based robot using IR sensors and PID speed control.</p>
+      </div>
+    </a>
+
+    <a href="project-home-automation.html">
+      <div class="project-card">
+        <img src="assets/img/HAS.png" alt="Home Automation">
+        <h3>Home Automation System</h3>
+        <p>ESP32 Wi-Fi lighting & door control with safe relay design.</p>
+      </div>
+    </a>
+
+    <a href="project-cleaning-robot.html">
+      <div class="project-card">
+        <img src="assets/img/CR.jpg" alt="Cleaning Robot">
+        <h3>Autonomous Cleaning Robot</h3>
+        <p>SolidWorks chassis + custom PCB + ToF sensing + embedded control.</p>
+      </div>
+    </a>
+
+    <a href="project-ros2-robot.html">
+      <div class="project-card">
+        <img src="assets/img/SDR.png" alt="ROS2 Robot">
+        <h3>ROS 2 Cleaning Robot <span>(Ongoing Research)</span></h3>
+        <p>Raspberry Pi 5 + LiDAR SLAM + STM32 motor control.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 R. Punchihewa — Mechatronics Engineering Portfolio</p>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',function(e){
+      e.preventDefault();
+      const target=document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
