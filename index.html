@@ -6,115 +6,477 @@
   <title>R. Punchihewa Portfolio</title>
 
   <link rel="icon" type="image/png" href="assets/img/top.png">
+  <meta name="description" content="R. Punchihewa — Mechatronics undergraduate specializing in robotics, ROS2, embedded systems, and mechanical design." />
+  <meta name="theme-color" content="#0b1220" />
 
-  <!-- Fonts & Icons -->
+  <!-- Fonts + Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-    body{background:#0b1220;color:#e5e7eb}
+    body{background:#0b1220;color:#e5e7eb;line-height:1.7}
+    a{text-decoration:none;color:inherit}
 
-    /* NAVBAR */
+    /* NAV */
     .topnav{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background:rgba(2,6,23,.75);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid #1e293b;
-      transition:transform .35s ease, opacity .35s ease;
-    }
-    .topnav.hide{
-      transform:translateY(-110%);
-      opacity:0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(2,6,23,.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1e293b;
     }
     .topnav .inner{
-      max-width:1100px;
-      margin:auto;
-      padding:12px 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 18px;
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
+      gap: 14px;
     }
-    .brand{font-weight:800;color:#7dd3fc}
-
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+      color:#7dd3fc;
+    }
+    .brand img{
+      width:34px;height:34px;border-radius:10px;object-fit:cover;
+      border:1px solid #1e293b;
+      background:#1e293b;
+    }
+    .navlinks{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
     .navlinks a{
-      margin-left:10px;
-      padding:10px 14px;
+      padding:10px 12px;
       border-radius:999px;
       border:1px solid #1e293b;
+      background: rgba(255,255,255,.03);
       color:#cbd5f5;
       font-weight:700;
-      text-decoration:none;
+      font-size: 14px;
+      transition:.2s;
+    }
+    .navlinks a:hover{
+      border-color:#38bdf8;
+      color:#7dd3fc;
+      transform: translateY(-1px);
     }
 
     /* HERO */
     header{
-      min-height:100vh;
+      min-height:90vh;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
+      padding:20px;
       background:radial-gradient(circle at top,#1e3a8a,#020617 70%);
     }
+    .profile-img{
+      width:160px;height:160px;border-radius:50%;
+      object-fit:cover;border:4px solid #38bdf8;
+      margin-bottom:20px;background:#1e293b;
+    }
     header h1{font-size:3rem;color:#7dd3fc}
+    header p{font-size:1.1rem;margin:14px 0 22px;color:#cbd5f5;max-width:900px}
+
+    .hero-actions{
+      display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+    }
+    .btn{
+      padding:12px 26px;
+      border-radius:30px;
+      font-weight:700;
+      border:none;
+      cursor:pointer;
+      transition:.25s;
+      background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+      color:#020617;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(56,189,248,.25)}
+    .btn.secondary{
+      background:linear-gradient(135deg,#475569,#1e293b);
+      color:#e5e7eb;
+    }
+    .btn.ghost{
+      background:transparent;
+      border:1px solid #1e293b;
+      color:#cbd5e1;
+      padding:12px 16px;
+    }
+    .btn.ghost:hover{border-color:#38bdf8}
 
     section{padding:80px 12%}
+    section h2{
+      font-size:2.2rem;
+      margin-bottom:35px;
+      color:#7dd3fc;
+      text-align:center;
+      position:relative;
+    }
+    section h2:after{
+      content:'';
+      width:70px;height:4px;
+      background:#38bdf8;
+      display:block;
+      margin:10px auto 0;
+      border-radius:2px;
+    }
+
+    /* PROFILE */
+    .profile-text{
+      max-width:900px;
+      margin:auto;
+      text-align:center;
+      color:#d1d5db;
+      font-size:1.08rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+    .project-card{
+      background:#020617;
+      padding:25px;
+      border-radius:18px;
+      border:1px solid #1e293b;
+      transition:.25s;
+      display:flex;
+      flex-direction:column;
+      min-height: 320px;
+    }
+    .project-card:hover{
+      transform:translateY(-8px);
+      border-color:#38bdf8;
+    }
+    .project-card img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:15px;
+      background:#1e293b;
+    }
+    .project-card h3{
+      color:#7dd3fc;
+      margin-bottom:8px;
+    }
+    .project-card h3 span{
+      font-size:.8rem;
+      color:#38bdf8;
+      display:block;
+      margin-top:4px;
+    }
+    .project-card p{color:#cbd5e1;flex-grow:1}
+
+    /* CERTIFICATES */
+    .cert-meta{
+      color:#94a3b8;
+      font-weight:600;
+      margin-bottom: 8px;
+      font-size: .95rem;
+    }
+    .cert-actions{
+      margin-top: 14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+    .cert-actions a{
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid #1e293b;
+      background: rgba(255,255,255,.03);
+      font-weight:800;
+      color:#cbd5f5;
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .cert-actions a:hover{
+      border-color:#38bdf8;
+      color:#7dd3fc;
+      transform: translateY(-1px);
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(56,189,248,.08);
+      border: 1px solid rgba(56,189,248,.25);
+      color:#7dd3fc;
+      font-weight:800;
+      font-size: 13px;
+      width: fit-content;
+      margin-bottom: 12px;
+    }
+
+    /* CONTACT */
+    .contact-wrap{
+      max-width: 900px;
+      margin: 0 auto;
+      background:#020617;
+      border:1px solid #1e293b;
+      border-radius:18px;
+      padding:24px;
+      text-align:center;
+    }
+    .contact-links{
+      margin-top: 14px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .contact-links a{
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid #1e293b;
+      background: rgba(255,255,255,.03);
+      font-weight:800;
+      color:#cbd5f5;
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .contact-links a:hover{
+      border-color:#38bdf8;
+      color:#7dd3fc;
+      transform: translateY(-1px);
+    }
+
+    footer{
+      text-align:center;
+      padding:30px 15px;
+      background:#020617;
+      color:#94a3b8;
+      border-top:1px solid #1e293b;
+    }
+
+    @media(max-width:768px){
+      header h1{font-size:2.2rem}
+      section{padding:60px 7%}
+      .topnav .inner{padding: 10px 14px;}
+    }
+    /* Hide navigation menu on mobile */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+}
+    /* Hide / Show navbar on scroll */
+.topnav{
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.topnav.hide{
+  transform: translateY(-110%);
+  opacity: 0;
+}
   </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="topnav">
-  <div class="inner">
-    <div class="brand">R. Punchihewa</div>
-    <nav class="navlinks">
-      <a href="#profile">Profile</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- TOP NAVIGATION -->
+  <div class="topnav">
+    <div class="inner">
+      <a class="brand" href="#top">
+        <img src="assets/img/top.png" alt="Logo">
+        <span>R. Punchihewa</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Main Navigation">
+        <a href="#profile">Profile</a>
+        <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </div>
-</div>
 
-<!-- HERO -->
-<header id="top">
-  <div>
-    <h1>R. PUNCHIHEWA</h1>
-    <p>Mechatronics | Robotics | ROS2 | Embedded</p>
-  </div>
-</header>
+  <!-- HERO -->
+  <header id="top">
+    <div>
+      <img src="assets/img/my.jpg" alt="R. Punchihewa" class="profile-img">
+      <h1>R. PUNCHIHEWA</h1>
+      <p>Mechatronics Undergraduate | Robotics | ROS2 | Embedded Systems | Mechanical Design</p>
 
-<section id="profile">
-  <h2>Profile</h2>
-  <p>Mechatronics undergraduate focused on robotics and embedded systems.</p>
-</section>
+      <div class="hero-actions">
+        <a href="#projects" class="btn">
+          <i class="fas fa-diagram-project"></i>View Projects
+        </a>
+        <a href="cv.pdf" class="btn secondary" target="_blank" rel="noopener">
+          <i class="fas fa-file-alt"></i>Download CV
+        </a>
+        <a href="https://www.linkedin.com/in/ransarani-punchihewa" class="btn ghost" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ransarani" class="btn ghost" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </header>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <p>Project details here...</p>
-</section>
+  <!-- PROFILE -->
+  <section id="profile">
+    <h2>Profile</h2>
+    <div class="profile-text">
+      <p>
+        Mechatronics undergraduate focused on robotics, ROS/ROS2 systems, embedded hardware,
+        and mechanical design. Experienced in developing autonomous platforms using SLAM,
+        motor control, and low-cost hardware integration. Currently seeking an internship
+        in robotics or embedded systems engineering.
+      </p>
+    </div>
+  </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email / LinkedIn / GitHub</p>
-</section>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
 
-<!-- NAVBAR SCROLL SCRIPT -->
-<script>
-  let lastScrollY = window.scrollY;
-  const nav = document.querySelector('.topnav');
+      <a href="project-line-follower.html">
+        <div class="project-card">
+          <img src="assets/img/LFR.jpg" alt="Line Following Robot">
+          <h3>Line Following Robot</h3>
+          <p>Arduino-based robot using IR sensors and PID speed control.</p>
+        </div>
+      </a>
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY && window.scrollY > 80) {
-      nav.classList.add('hide');
-    } else {
-      nav.classList.remove('hide');
-    }
-    lastScrollY = window.scrollY;
-  });
-</script>
+      <a href="project-home-automation.html">
+        <div class="project-card">
+          <img src="assets/img/HAS.png" alt="Home Automation">
+          <h3>Home Automation System</h3>
+          <p>ESP32 Wi-Fi lighting & door control with safe relay design.</p>
+        </div>
+      </a>
+
+      <a href="project-cleaning-robot.html">
+        <div class="project-card">
+          <img src="assets/img/CR.jpg" alt="Cleaning Robot">
+          <h3>Autonomous Cleaning Robot</h3>
+          <p>SolidWorks chassis + custom PCB + ToF sensing + embedded control.</p>
+        </div>
+      </a>
+
+      <a href="project-ros2-robot.html">
+        <div class="project-card">
+          <img src="assets/img/SDR.png" alt="ROS2 Robot">
+          <h3>ROS 2 Cleaning Robot <span>(Ongoing Research)</span></h3>
+          <p>Raspberry Pi 5 + LiDAR SLAM + STM32 motor control.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <h2>Certificates</h2>
+
+    <div class="projects-grid">
+      <!-- Certificate 1 -->
+      <div class="project-card">
+        <div class="badge"><i class="fa-solid fa-certificate"></i> UDEMY • 2026</div>
+        <h3>Self Driving and ROS 2 – Learn by Doing! Map & Localization</h3>
+        <div class="cert-meta">Completed: Feb 22, 2026</div>
+        <p>
+          Covered ROS2 mapping, localization, and SLAM concepts using practical examples and tools.
+        </p>
+
+        <div class="cert-actions">
+          <a href="assets/ros2-odometry-control.pdf" target="_blank" rel="noopener">
+            <i class="fa-regular fa-eye"></i> View PDF
+          </a>
+          <a href="assets/ros2-odometry-control.pdf" download>
+            <i class="fa-solid fa-download"></i> Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Certificate 2 -->
+      <div class="project-card">
+        <div class="badge"><i class="fa-solid fa-certificate"></i> UDEMY • 2025</div>
+        <h3>Self Driving and ROS 2 – Learn by Doing! Odometry & Control</h3>
+        <div class="cert-meta">Completed: Nov 19, 2025</div>
+        <p>
+          Learned odometry, robot motion control, kinematics basics, and control strategies for navigation.
+        </p>
+
+        <div class="cert-actions">
+          <a href="assets/ros2-map-localization.pdf" target="_blank" rel="noopener">
+            <i class="fa-regular fa-eye"></i> View PDF
+          </a>
+          <a href="assets/ros2-map-localization.pdf" download>
+            <i class="fa-solid fa-download"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-wrap">
+      <p style="color:#cbd5e1;">
+        Feel free to contact me for internships, collaborations, or project discussions.
+      </p>
+
+      <div class="contact-links">
+        <!-- CHANGE THIS EMAIL -->
+        <a href="mailto:your-email@example.com">
+          <i class="fa-solid fa-envelope"></i> Email
+        </a>
+
+        <a href="https://www.linkedin.com/in/ransarani-punchihewa" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+
+        <a href="https://github.com/ransarani" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 R. Punchihewa — Mechatronics Engineering Portfolio</p>
+  </footer>
+
+  <script>
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+      anchor.addEventListener('click',function(e){
+        e.preventDefault();
+        const target=document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth'});
+      });
+    });
+  </script>
 
 </body>
-</html>
+</html> 
