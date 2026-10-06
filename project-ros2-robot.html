@@ -41,6 +41,8 @@
     .media-item .caption { padding:14px; text-align:center; color:#9ca3af; font-size:.95rem; }
 
     .media-item video { width:100%; height:260px; object-fit:cover; display:block; background:#000; }
+    .media-item.portrait video, .media-item.portrait img { height:auto; max-height:520px; object-fit:contain; background:#000; }
+    .hero-media { grid-template-columns:repeat(auto-fit,minmax(260px,380px)); justify-content:start; }
     .sub-head { color:#7dd3fc; margin:22px 0 4px; font-size:1.1rem; }
 
     .card { background:#020617; border:1px solid #1e293b; border-radius:20px; padding:28px; margin:18px 0; }
@@ -96,28 +98,17 @@
       </a>
     </div>
 
-    <div class="media-grid">
-      <div class="media-item">
-        <img src="assets/img/SDR2.png" alt="Robot prototype" onclick="openModal(this)"
-             onerror="this.src='https://placehold.co/800x450/1e293b/38bdf8?text=Robot+Prototype'">
-        <div class="caption">Prototype with Raspberry Pi 5 and Roborock LiDAR</div>
+    <div class="media-grid hero-media">
+      <div class="media-item portrait">
+        <video controls preload="metadata" playsinline poster="assets/img/real_driving_poster.jpg">
+          <source src="assets/video/real_robot_driving.mp4" type="video/mp4">
+        </video>
+        <div class="caption">The real robot driving on a tiled indoor floor</div>
       </div>
-      <div class="media-item">
-        <img src="assets/img/SD2.png" alt="Assembled isolation PCB" onclick="openModal(this)"
-             onerror="this.src='https://placehold.co/800x450/1e293b/38bdf8?text=PCB+Photo'">
-        <div class="caption">Assembled isolation PCB (top) and solder side (bottom)</div>
+      <div class="media-item portrait">
+        <img src="assets/img/real_robot.jpg" alt="Assembled robot" onclick="openModal(this)">
+        <div class="caption">The assembled robot: black enclosure with the LiDAR cap on top</div>
       </div>
-      <div class="media-item">
-        <img src="assets/img/SD1.png" alt="KiCad PCB design" onclick="openModal(this)"
-             onerror="this.src='https://placehold.co/800x450/1e293b/38bdf8?text=KiCad+Design'">
-        <div class="caption">KiCad PCB layout and schematic</div>
-      </div>
-      <!-- TODO: add your saved SLAM map (room_full.pgm converted to PNG) as assets/img/slam_map.png, then uncomment:
-      <div class="media-item">
-        <img src="assets/img/slam_map.png" alt="SLAM map" onclick="openModal(this)">
-        <div class="caption">SLAM map of the test room (2.0 × 4.8 m, 0.05 m/cell)</div>
-      </div>
-      -->
     </div>
 
     <div class="card">
@@ -167,6 +158,21 @@
     </div>
 
     <div class="card">
+      <h2>Hardware</h2>
+      <div class="media-grid">
+        <div class="media-item">
+          <img src="assets/img/chassis_top.jpg" alt="Chassis layout" onclick="openModal(this)">
+          <div class="caption">Chassis layout: two drive wheels with motors, electronics area, battery cutout</div>
+        </div>
+        <div class="media-item">
+          <img src="assets/img/SDR2.png" alt="Robot prototype" onclick="openModal(this)"
+               onerror="this.src='https://placehold.co/800x450/1e293b/38bdf8?text=Robot+Prototype'">
+          <div class="caption">Prototype with Raspberry Pi 5 and Roborock LiDAR</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
       <h2>Engineering Challenges</h2>
 
       <h3>1. Motor noise crashing the Raspberry Pi</h3>
@@ -176,6 +182,19 @@
         I designed a custom isolation PCB using a 6N137 optocoupler and an IRLZ44N MOSFET that physically breaks the ground path.
         Ground noise on the Pi dropped to under 10 mV and the crashes stopped.
       </p>
+
+      <div class="media-grid">
+        <div class="media-item">
+          <img src="assets/img/SD2.png" alt="Assembled isolation PCB" onclick="openModal(this)"
+               onerror="this.src='https://placehold.co/800x450/1e293b/38bdf8?text=PCB+Photo'">
+          <div class="caption">Assembled isolation PCB (top) and solder side (bottom)</div>
+        </div>
+        <div class="media-item">
+          <img src="assets/img/SD1.png" alt="KiCad PCB design" onclick="openModal(this)"
+               onerror="this.src='https://placehold.co/800x450/1e293b/38bdf8?text=KiCad+Design'">
+          <div class="caption">KiCad PCB layout and schematic</div>
+        </div>
+      </div>
 
       <h3>2. Both wheel encoders failed</h3>
       <p>
@@ -205,39 +224,19 @@
 
     <div class="card">
       <h2>Demonstrations</h2>
-      <p>Simulation in RViz2 alongside the real robot. Delete any item below you don't have a file for.</p>
-
-      <h3 class="sub-head">Real robot</h3>
+      <p>RViz2 recordings of the LiDAR scan and the occupancy map being built, captured while running the robot.</p>
       <div class="media-grid">
         <div class="media-item">
-          <video controls preload="metadata" playsinline poster="assets/img/real_slam_poster.jpg">
-            <source src="assets/video/real_slam.mp4" type="video/mp4">
+          <video controls preload="metadata" playsinline poster="assets/img/rviz_mapping_poster.jpg">
+            <source src="assets/video/rviz_mapping.mp4" type="video/mp4">
           </video>
-          <div class="caption">Live SLAM mapping on the real robot</div>
+          <div class="caption">RViz2: LiDAR scan points and the occupancy map (1:37)</div>
         </div>
         <div class="media-item">
-          <video controls preload="metadata" playsinline poster="assets/img/real_nav_poster.jpg">
-            <source src="assets/video/real_navigation.mp4" type="video/mp4">
+          <video controls preload="metadata" playsinline poster="assets/img/rviz_slam_poster.jpg">
+            <source src="assets/video/rviz_slam_run.mp4" type="video/mp4">
           </video>
-          <div class="caption">Autonomous navigation to a goal</div>
-        </div>
-        <div class="media-item">
-          <img src="assets/img/real_photo_1.jpg" alt="Real robot" onclick="openModal(this)">
-          <div class="caption">The assembled robot</div>
-        </div>
-      </div>
-
-      <h3 class="sub-head">RViz2 simulation</h3>
-      <div class="media-grid">
-        <div class="media-item">
-          <video controls preload="metadata" playsinline poster="assets/img/rviz_poster.jpg">
-            <source src="assets/video/rviz_simulation.mp4" type="video/mp4">
-          </video>
-          <div class="caption">Simulated mapping and navigation in RViz2</div>
-        </div>
-        <div class="media-item">
-          <img src="assets/img/rviz_map.png" alt="RViz2 map" onclick="openModal(this)">
-          <div class="caption">RViz2 view: map, laser scan and planned path</div>
+          <div class="caption">RViz2: SLAM map growing during a longer mapping run (3:56)</div>
         </div>
       </div>
     </div>
